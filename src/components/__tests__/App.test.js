@@ -12,14 +12,13 @@ import { shallow } from 'enzyme';
 import sinon from 'sinon';
 
 
+let wrapper;
+
+beforeEach(()=> {
+    wrapper = shallow(<App />);
+});
 it('shows a comment box', ()=> {
     
-    //render(<App />)
-    //const linkElement = screen.getByText(/Comment Box/i)
-    //expect(linkElement).toBeInTheDocument();
-
-
-    const wrapper = shallow(<App />);
     expect(wrapper.find(CommentBox).length).toEqual(1)
 
 })
@@ -27,12 +26,6 @@ it('shows a comment box', ()=> {
 
 it('shows a comment list', ()=> {
     
-    //render(<App />)
-    //const linkElement = screen.getByText(/Comment Box/i)
-    //expect(linkElement).toBeInTheDocument();
-
-
-    const wrapper = shallow(<App />);
     expect(wrapper.find(CommentList).length).toEqual(1)
 
 })
