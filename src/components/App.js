@@ -51,6 +51,9 @@ function Layout() {
             <Link to="/post">Post a Comment</Link>
           </li>
           <li>
+            <Link to="/list">Comments</Link>
+          </li>
+          <li>
              <WrappedButton />
           </li>
         </ul>

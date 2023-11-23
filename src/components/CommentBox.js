@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 import * as actions from '../actions'
-import { Navigate } from "react-router-dom";
+import requireAuth from "./requireAuth";
+
 
 class CommentBox extends Component {
-   state = { comment: '', navigate: false }
+   state = { comment: '' }
    handleChange = (event) => {
       this.setState({ comment: event.target.value })
    }
@@ -17,25 +18,12 @@ class CommentBox extends Component {
    }
 
 
-   componentDidMount() {
-      this.shouldNavigateAway()
-   }
-
-   componentDidUpdate() {
-      this.shouldNavigateAway()
-   }
-
-   shouldNavigateAway() {
-      if(!this.props.auth && this.state.navigate == false) {
-         //console.log('I need to leave')
-         this.setState({navigate: true})
-      }
-   }
+   
 
    render() {
       return (
          <div>
-            { this.state.navigate && <Navigate to="/" replace={true} />}
+            
             <form onSubmit={this.handleSubmit}>
                <h4>Add a Comment</h4>
                <textarea onChange={this.handleChange} value={this.state.comment} />
@@ -50,9 +38,5 @@ class CommentBox extends Component {
 }
 
 
-function mapStateToProps(state) {
-   return {
-      auth: state.auth
-   }
-}
-export default connect(mapStateToProps, actions)(CommentBox);
+
+export default connect(null, actions)(requireAuth(CommentBox));
