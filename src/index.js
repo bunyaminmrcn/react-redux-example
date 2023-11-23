@@ -11,25 +11,10 @@ import App from "./components/App";
 const container = document.getElementById('root');
 const root = createRoot(container);
 
-
-let router = createBrowserRouter([
-    
-    {
-        path: "/list",
-        element: <CommentList />,
-    },
-    {
-        path: "/post",
-        element: <CommentBox />,
-    },{
-        path: "/",
-        
-        element: <App />,
-    },
-])
 root.render(
     <Root>
-        <RouterProvider router={router}>
-        </RouterProvider>
+        <BrowserRouter>
+            <App />
+        </BrowserRouter>
     </Root>
 )
