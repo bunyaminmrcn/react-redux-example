@@ -1,7 +1,7 @@
 export default ({ dispatch }) => next => action => {
 
     if(!action.payload || !action.payload.then) {
-        next(action)
+        return next(action)
     }
 
     action.payload.then(response => {
